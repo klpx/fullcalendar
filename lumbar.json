@@ -36,6 +36,7 @@
         "src/EventManager.js",
         "src/date_util.js",
         "src/util.js",
+        "src/basic/ProductionMonthView.js",
         "src/basic/MonthView.js",
         "src/basic/BasicWeekView.js",
         "src/basic/BasicDayView.js",

@@ -245,7 +245,8 @@ function BasicView(element, calendar, viewName) {
 
 	function buildCellHTML(date) {
 		var contentClass = tm + "-widget-content";
-		var month = t.start.getMonth();
+		var start = t.start,
+			end = t.end;
 		var today = clearTime(new Date());
 		var html = '';
 		var classNames = [
@@ -254,7 +255,7 @@ function BasicView(element, calendar, viewName) {
 			contentClass
 		];
 
-		if (date.getMonth() != month) {
+		if (start > date || date > end) {
 			classNames.push('fc-other-month');
 		}
 		if (+date == +today) {
