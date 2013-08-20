@@ -67,7 +67,7 @@ function ProductionMonthView(element, calendar) {
 			rowCnt = 6;
 		}
 
-		t.title = formatDate(start, opt('titleFormat') || prodmonth.name);
+		t.title = formatDate(start, prodmonth.name || opt('titleFormat'));
 
 		t.start = start;
 		t.end = end;

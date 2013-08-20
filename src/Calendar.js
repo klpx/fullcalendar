@@ -211,6 +211,7 @@ function Calendar(element, options, eventSources) {
 
 		updateTitle();
 		updateTodayButton();
+		updateNavigationButtons();
 
 		trigger('viewRender', currentView, currentView, currentView.element);
 		currentView.trigger('viewDisplay', _element); // deprecated
@@ -370,6 +371,22 @@ function Calendar(element, options, eventSources) {
 		}
 		else {
 			header.enableButton('today');
+		}
+	}
+
+
+	function updateNavigationButtons() {
+		header.enableButton('prev');
+		header.enableButton('next');
+
+		var prodmonths = t.options.prodmonths;
+		if (prodmonths) {
+			if (date < prodmonths[0].end) {
+				header.disableButton('prev');
+			}
+			else if (date >= prodmonths[prodmonths.length-1].start) {
+				header.disableButton('next');
+			}
 		}
 	}
 	
