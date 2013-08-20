@@ -372,6 +372,13 @@ function Calendar(element, options, eventSources) {
 		else {
 			header.enableButton('today');
 		}
+
+		var prodmonths = t.options.prodmonths;
+		if (prodmonths) {
+			if (today < prodmonths[0].start || today > prodmonths[prodmonths.length-1].end) {
+				header.disableButton('today');
+			}
+		}
 	}
 
 
