@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <link href='../build/out/fullcalendar.css' rel='stylesheet' />
+    <link href='../build/out/fullcalendar.print.css' rel='stylesheet' media='print' />
+    <script src='../build/out/jquery.js'></script>
+    <script src='../build/out/jquery-ui.js'></script>
+    <script src='../build/out/fullcalendar.js'></script>
+    <script>
+
+        $(document).ready(function() {
+
+            var months = [
+                {
+                    year: 2013,
+                    month: 5,
+                    start: new Date(2013, 4, 3),
+                    end: new Date(2013, 4, 27)
+                },
+                {
+                    year: 2013,
+                    month: 6,
+                    start: new Date(2013, 5, 1),
+                    end: new Date(2013, 5, 27)
+                },
+                {
+                    year: 2013,
+                    month: 7,
+                    start: new Date(2013, 6, 3),
+                    end: new Date(2013, 6, 27)
+                }
+            ];
+
+            $('#calendar').fullCalendar({
+                defaultView: 'prodmonth',
+                aspectRatio: 5,
+                contentHeight: 400,
+                height: 400,
+                // русификация
+                buttonText: {
+                    today: 'сегодня',
+                    month: 'Месяц',
+                    day: 'День',
+                    week: 'Неделя'
+                },
+                header: {
+                    left: 'title',
+                    right: 'prev,next',
+                    today: ''
+                },
+                firstDay: 1,
+                monthNames: ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
+                monthNamesShort: ["Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"],
+                dayNames: ["Вск", "Пнд", "Втр", "Срд", "Чтв", "Птн", "Суб", "Вск"],
+                dayNamesShort: ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"],
+                editable: true,
+                droppable: true,
+                disableResizing: true,
+                prodmonths: months
+            });
+
+        });
+
+    </script>
+    <style>
+
+        body {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 13px;
+            font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+        }
+
+        #calendar {
+            width: 900px;
+            margin: 0 auto;
+        }
+
+    </style>
+</head>
+<body>
+<div id='calendar'></div>
+</body>
+</html>
