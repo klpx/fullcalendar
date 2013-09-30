@@ -388,7 +388,9 @@ function Calendar(element, options, eventSources) {
 
 		var prodmonths = t.options.prodmonths;
 		if (prodmonths) {
-			if (date < prodmonths[0].end) {
+			var end = cloneDate(prodmonths[0].end);
+			addDays(end, 1);
+			if (date < end) {
 				header.disableButton('prev');
 			}
 			else if (date >= prodmonths[prodmonths.length-1].start) {

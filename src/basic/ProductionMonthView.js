@@ -53,7 +53,11 @@ function ProductionMonthView(element, calendar) {
 				date.setMonth(prodmonth.month - 1);
 				date.setYear(prodmonth.year);
 			}
-			if (date < prodmonth.start) date.setDate(prodmonth.start.getDate());
+			if (date < prodmonth.start) {
+				date.setDate(prodmonth.start.getDate());
+			} else if (date > prodmonth.end) {
+				date.setDate(prodmonth.end.getDate());
+			}
 
 			start = cloneDate(prodmonth.start, true);
 			end = cloneDate(prodmonth.end, true);
