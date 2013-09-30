@@ -19,7 +19,6 @@ function ProductionMonthView(element, calendar) {
 	
 	
 	function render(date, delta) {
-
 		if (delta) {
 			addMonths(date, delta);
 			date.setDate(1);
@@ -28,7 +27,7 @@ function ProductionMonthView(element, calendar) {
 		var firstDay = opt('firstDay');
 
 		var prodmonths	= opt('prodmonths'),
-			prodmonth	= {},
+			prodmonth	= null,
 			start,
 			end;
 
@@ -38,14 +37,24 @@ function ProductionMonthView(element, calendar) {
 			end = addMonths(cloneDate(start), 1);
 		}
 		else {
-			prodmonth = prodmonths[0];
 			for (var i in prodmonths) {
 				var pm = prodmonths[i];
-				if (pm.start <= date && date <= pm.end) {
+				if (pm.year == date.getFullYear() && pm.month == date.getMonth() + 1) {
 					prodmonth = pm;
 					break;
 				}
 			}
+			if (!prodmonth) {
+				if (date > prodmonths[prodmonths.length - 1].end) {
+					prodmonth = prodmonths[prodmonths.length - 1];
+				} else {
+					prodmonth = prodmonths[0];
+				}
+				date.setMonth(prodmonth.month - 1);
+				date.setYear(prodmonth.year);
+			}
+			if (date < prodmonth.start) date.setDate(prodmonth.start.getDate());
+
 			start = cloneDate(prodmonth.start, true);
 			end = cloneDate(prodmonth.end, true);
 		}
