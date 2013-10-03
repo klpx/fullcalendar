@@ -8,7 +8,6 @@ function ProductionMonthView(element, calendar) {
 	// exports
 	t.render = render;
 	
-	
 	// imports
 	BasicView.call(t, element, calendar, 'prodmonth');
 	var opt = t.opt;
@@ -80,7 +79,7 @@ function ProductionMonthView(element, calendar) {
 			rowCnt = 6;
 		}
 
-		t.title = formatDate(start, prodmonth.name || opt('titleFormat'));
+		t.title = formatDate(start, prodmonth.name || opt('titleFormat')) + ' <span class="dates-range">(' + formatDate(start, 'dd MMM').toLowerCase() + ' - ' + formatDate(end, 'dd MMM').toLowerCase() + ')</span>';
 
 		t.start = start;
 		t.end = end;
