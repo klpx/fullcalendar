@@ -86,6 +86,7 @@ function ProductionMonthView(element, calendar) {
 		t.end = end;
 		t.visStart = visStart;
 		t.visEnd = visEnd;
+		t.prodmonth = prodmonth;
 
 		renderBasic(rowCnt, colCnt, true);
 	}
